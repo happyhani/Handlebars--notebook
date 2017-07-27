@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery-3.0.0.js"></script>
+		<script src="js/handlebars-v4.0.10.js"></script>
+		<script id="class-template" type="text/x-handlebars-template">
+			<ul>
+				{{#each this}}
+				<li>
+					<div class="innerbox">
+						<img src="{{image}}" alt="{{title}}" />
+						<div class="titlediv">
+							<span class="title">{{title}}</span>
+							{{#equal hasnote 1}} 
+							<span class="note">(有笔记)</span> 
+							{{/equal}}
+							
+						</div>
+						<div class="subtitle">{{subtitle}} </div>
+						<div class="subtitle {{#long timespan}} long {{else}} short {{/long}}">时间：{{timespan}} </div>
+						
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script id="paging-template" type="text/x-handlebars-template">
+			<ul>
+				{{#each this}}
+				<li data-id={{index}} 
+					{{#if cur}} class="cur" {{/if}}
+					{{#if clickable}} class="clickable" {{/if}}>
+					{{{text}}}
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+	</head>
+	<body>
+		
+		<div class="banner">
+			<h1>慕课笔记本</h1>
+			<h2>你的指尖，有改变世界的力量</h2>
+		</div>
+		<div class="classes" id="classes">
+			
+		</div>
+		
+		<!--分页组件-->
+		<div class="paging" id="paging">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ul>
+			
+		</div>
+		
+		<script src="js/script.js"></script>
+	</body>
+</html>
